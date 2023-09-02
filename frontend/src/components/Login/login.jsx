@@ -1,15 +1,16 @@
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
+import { token_refresh } from "../../slices/TokenSlice";
+import { user_refresh } from "../../slices/UserSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
-import "./login.css";
 import { useMutation } from "@tanstack/react-query";
+import webLogo from "../../assets/web_logo_1.png";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import axios from "axios";
 import Cookies from "js-cookie";
-import { user_refresh } from "../../slices/UserSlice";
-import { token_refresh } from "../../slices/TokenSlice";
+import * as yup from "yup";
+import axios from "axios";
+import "./login.css";
 
 function Login() {
   const dispatch = useDispatch();
@@ -66,7 +67,15 @@ function Login() {
       ) : (
         <div className="signupFrm">
           <form className="form" onSubmit={handleSubmit(onSubmit)}>
-            <h1 className="title">Login</h1>
+            <img
+              src={webLogo}
+              width={250}
+              height={180}
+              style={{ margin: "20px" }}
+            />
+            <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+              Sign Up
+            </h2>
 
             <div className="inputContainer">
               <input

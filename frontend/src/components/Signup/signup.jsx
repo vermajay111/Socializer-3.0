@@ -6,8 +6,13 @@ import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { user_refresh } from "../../slices/UserSlice";
+import { token_refresh } from "../../slices/TokenSlice";
+import webLogo from "../../assets/web_logo_1.png";
 
 function Signup() {
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   const schema = yup.object().shape({
     first_name: yup.string().required("First Name is required"),
@@ -41,6 +46,8 @@ function Signup() {
         Cookies.set("username", data.data.user.username, {
           expires: expirationDate,
         });
+        dispatch(user_refresh());
+        dispatch(token_refresh());
         navigate("/posts");
       },
     }
@@ -60,9 +67,9 @@ function Signup() {
       ) : (
         <div className="signupFrm">
           <form className="form" onSubmit={handleSubmit(onSubmit)}>
-            <h1 className="title">Sign up</h1>
-
-            <div className="inputContainer">
+            <img src={webLogo} width={250} height={180} style={{ margin: '20px' }} />
+            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Sign Up</h2>
+            <div className="inputContainer" >
               <input
                 type="text"
                 className="input"
