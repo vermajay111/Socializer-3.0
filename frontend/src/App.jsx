@@ -4,6 +4,7 @@ import Signup from "./components/Signup/signup";
 import Login from "./components/Login/login";
 import Logout from "./components/Logout/logout";
 import NavBar from "./components/Navbar/navbar";
+import Posts from "./components/Posts/posts";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -28,7 +29,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
-              <Route path="/posts" element={<h1>Posts</h1>} />
+              <Route path="/posts" element={<Posts/>} />
               <Route path="*" element={<h1>Page Not Found 404</h1>} />
             </Routes>
           </QueryClientProvider>
