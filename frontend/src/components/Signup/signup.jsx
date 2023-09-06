@@ -48,6 +48,7 @@ function Signup() {
         });
         dispatch(user_refresh());
         dispatch(token_refresh());
+        localStorage.removeItem("showErrorMessage")
         navigate("/posts");
       },
     }
@@ -65,6 +66,12 @@ function Signup() {
           <p>Loading...</p>
         </>
       ) : (
+        <>
+        {localStorage.getItem("showErrorMessage") === 'true' && (
+          <div className="alert alert-danger" role="alert" style={{ marginTop: '120px' }}>
+            Login Or Signup before looking at posts!
+          </div>
+        )}
         <div className="signupFrm">
           <form className="form" onSubmit={handleSubmit(onSubmit)}>
             <img src={webLogo} width={250} height={180} style={{ margin: '20px' }} />
@@ -150,6 +157,7 @@ function Signup() {
             <input type="submit" className="submitBtn" value="Sign up" />
           </form>
         </div>
+        </>
       )}
     </>
   );

@@ -43,6 +43,7 @@ function Login() {
         });
         dispatch(user_refresh());
         dispatch(token_refresh());
+        localStorage.removeItem("showErrorMessage");
         navigate("/posts");
       },
       onError: (error) => {
@@ -64,48 +65,56 @@ function Login() {
           <p>Loading...</p>
         </>
       ) : (
-        <div className="signupFrm">
-          <form className="form" onSubmit={handleSubmit(onSubmit)}>
-            <img
-              src={webLogo}
-              width={250}
-              height={180}
-              style={{ margin: "20px" }}
-            />
-            <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-              Sign Up
-            </h2>
-
-            <div className="inputContainer">
-              <input
-                type="text"
-                className="input"
-                placeholder="a"
-                {...register("username")}
-              />
-              <label className="label">Username</label>
+        <>
+        
+          {localStorage.getItem("showErrorMessage") === 'true' && (
+            <div className="alert alert-danger" role="alert">
+              Login Or Signup before looking at posts!
             </div>
-            {errors.username && (
-              <p className="text-danger">{errors.username.message}</p>
-            )}
-
-            <div className="inputContainer">
-              <input
-                type="password"
-                className="input"
-                placeholder="a"
-                {...register("password")}
+          )}
+          <div className="signupFrm">
+            <form className="form" onSubmit={handleSubmit(onSubmit)}>
+              <img
+                src={webLogo}
+                width={250}
+                height={180}
+                style={{ margin: "20px" }}
               />
-              <label className="label">Password</label>
-            </div>
-            {errors.password && (
-              <p className="text-danger">{errors.password.message}</p>
-            )}
+              <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+                Login
+              </h2>
 
-            <p className="text-danger">{failed}</p>
-            <input type="submit" className="submitBtn" value="Login" />
-          </form>
-        </div>
+              <div className="inputContainer">
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="a"
+                  {...register("username")}
+                />
+                <label className="label">Username</label>
+              </div>
+              {errors.username && (
+                <p className="text-danger">{errors.username.message}</p>
+              )}
+
+              <div className="inputContainer">
+                <input
+                  type="password"
+                  className="input"
+                  placeholder="a"
+                  {...register("password")}
+                />
+                <label className="label">Password</label>
+              </div>
+              {errors.password && (
+                <p className="text-danger">{errors.password.message}</p>
+              )}
+
+              <p className="text-danger">{failed}</p>
+              <input type="submit" className="submitBtn" value="Login" />
+            </form>
+          </div>
+        </>
       )}
     </>
   );

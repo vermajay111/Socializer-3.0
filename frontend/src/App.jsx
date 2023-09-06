@@ -5,6 +5,7 @@ import Login from "./components/Login/login";
 import Logout from "./components/Logout/logout";
 import NavBar from "./components/Navbar/navbar";
 import Posts from "./components/Posts/posts";
+import Home from "./components/Home/home";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -24,7 +25,7 @@ function App() {
           <NavBar />
           <QueryClientProvider client={client}>
             <Routes>
-              <Route path="/" element={<h1>Home</h1>} />
+              <Route path="/" element={<Home/>} />
               <Route path="/token" element={<h1>Token</h1>} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
