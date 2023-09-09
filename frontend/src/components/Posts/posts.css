@@ -10,6 +10,13 @@
     color: #fff;
 }
 
+.make_green{
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;  
+}
+
+
 .btn-outline-secondary.btn-danger {
     background-color: #fff;
     border-color: #6c757d;
@@ -17,6 +24,12 @@
 }
 
 .btn-outline-secondary.btn-danger:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+.make_dislike{
     background-color: #dc3545;
     border-color: #dc3545;
     color: #fff;
@@ -45,3 +58,4 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+

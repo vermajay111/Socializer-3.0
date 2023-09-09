@@ -20,12 +20,14 @@ def get_all_posts(request):
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-def like_post(request, pk):
+def like_post(request):
     raw_auth_header = request.META.get('HTTP_AUTHORIZATION', '')
     user_token = raw_auth_header.replace('token ', '')
+    pk = request.data['pk']
+
     user = get_object_or_404(User, auth_token=user_token)
     post = get_object_or_404(Post, id=pk)
-    
+
     if user not in post.dislikes.all():
         if user in post.likes.all():
             post.likes.remove(user)
@@ -38,15 +40,23 @@ def like_post(request, pk):
 
     post.likes.set(post.likes.all())
     post.save()
-    serializer = PostSerializer(post, many=False)
-    return Response(serializer.data)
+
+    # Create a custom response dictionary with likes and dislikes for the specific post
+    response_data = {
+        "likes": [like.username for like in post.likes.all()],
+        "dislikes": [dislike.username for dislike in post.dislikes.all()],
+    }
+
+    return Response(response_data)
 
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-def dislike_post(request, pk):
+def dislike_post(request):
     raw_auth_header = request.META.get('HTTP_AUTHORIZATION', '')
     user_token = raw_auth_header.replace('token ', '')
+    pk = request.data['pk']
+
     user = get_object_or_404(User, auth_token=user_token)
     post = get_object_or_404(Post, id=pk)
 
@@ -62,8 +72,14 @@ def dislike_post(request, pk):
 
     post.likes.set(post.likes.all())
     post.save()
-    serializer = PostSerializer(post, many=False)
-    return Response(serializer.data)
+    response_data = {
+        "likes": [like.username for like in post.likes.all()],
+        "dislikes": [dislike.username for dislike in post.dislikes.all()],
+    }
+
+    return Response(response_data)
+   
+    
     
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
