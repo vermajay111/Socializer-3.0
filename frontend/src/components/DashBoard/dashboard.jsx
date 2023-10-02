@@ -5,6 +5,7 @@ import post from "../../assets/icons/reader-outline.svg";
 import AnalyticsIcons from "../../assets/icons/analytics-outline.svg";
 import LaptopIcon from "../../assets/icons/laptop-outline.svg"
 import settings from "../../assets/icons/settings-outline.svg";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   return (
@@ -15,14 +16,17 @@ function Dashboard() {
     <div className="container">
       <div className="row">
         <div className="col-md-6">
+        <Link to="/create_new_post">
           <button
             type="button"
             className="btn btn-outline-secondary"
             style={{ width: "100%", height: 150, marginBottom: 20 }}
+            
           >
             <img src={post} width={50} height={50} style={{ marginRight: 20 }} />
             Make a new Post
           </button>
+          </Link>
         </div>
         <div className="col-md-6">
           <button

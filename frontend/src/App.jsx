@@ -7,6 +7,7 @@ import NavBar from "./components/Navbar/navbar";
 import Dashboard from "./components/DashBoard/dashboard";
 import Posts from "./components/Posts/posts";
 import Home from "./components/Home/home";
+import CreateNewPost from "./components/CreateNewPost/createnewpost";
 import PageNotFound from "./components/PageNotFound/pagenotfound";
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -28,6 +29,7 @@ function App() {
           <QueryClientProvider client={client}>
             <Routes>
               <Route path="/" element={<Home/>} />
+              <Route path="/create_new_post" element={<CreateNewPost/>}/>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
