@@ -95,3 +95,16 @@ def comment_on_post(request, pk):
     comments = Comment.objects.filter(post=post)
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
+
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def create_new_post(request):
+    raw_auth_header = request.META.get('HTTP_AUTHORIZATION', '')
+    user_token = raw_auth_header.replace('token ', '')
+    data = request.data
+    user = get_object_or_404(User, auth_token=user_token)
+    post = Post(title=data['title'], text=data['content'], author=user)
+    post.save()
+    return Response({"info": "Created_Post"})
+    

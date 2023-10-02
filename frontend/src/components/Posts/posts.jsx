@@ -14,10 +14,39 @@ const DateTimeDisplay = (dateTimeString) => {
   return formattedDateTime;
 };
 
+/* 
+const ColorChange = (logs, postId, data) => {
+  const Username = useSelector((state) => state.user.value);
+  try {
+    if (logs.hasOwnProperty(postId)) {
+      if (logs[postId].likes.includes(Username)) {
+        return "like";
+      } else if (logs[postId].dislikes.includes(Username)) {
+        return "dislike";
+      }
+    } else {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id == postId) {
+          if (data[i].likes.includes(Username)) {
+            return "like";
+          } else if (data[i].dislikes.includes(Username)) {
+            return "dislike";
+          }
+        }
+      }
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+*/
+
+
+
 function Posts() {
   let navigate = useNavigate();
   const [likes_dislikes_log, like_post_mutate_log] = useState({});
-  const [btn_color, change_colors] = useState([]);
   const Username = useSelector((state) => state.user.value);
   const Token = useSelector((state) => state.token.value);
 
@@ -120,7 +149,7 @@ function Posts() {
                     <button
                       onClick={() => likePostMutation.mutate(post.id, index)}
                       className={`btn btn-sm btn-success ${
-                        
+                        post.likes.includes(Username)
                           ? "make_green"
                           : "btn-outline-secondary"
                       }`}

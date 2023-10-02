@@ -1,5 +1,12 @@
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "bootstrap/dist/css/bootstrap.css";
+import LoginIcon from "../../assets/icons/log-in-outline.svg";
+import HomeIcon from "../../assets/icons/home-outline.svg";
+import AddIcon from "../../assets/icons/add-outline.svg";
+import PostIcon from "../../assets/icons/reader-outline.svg"
+import SettingsIcon from "../../assets/icons/settings-outline.svg";
+import LogoutIcon from "../../assets/icons/log-out-outline.svg";
+import AppIcon from "../../assets/icons/apps-outline.svg";
 import { useSelector } from "react-redux";
 
 function NavBar() {
@@ -9,7 +16,7 @@ function NavBar() {
     <>
       <nav className="navbar bg-body-tertiary fixed-top">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/posts">
             Socializer
           </a>
           <button
@@ -43,12 +50,24 @@ function NavBar() {
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="/">
+                    <img
+                      src={HomeIcon}
+                      width={20}
+                      height={20}
+                      style={{ marginRight: 10 }}
+                    />
                     Home
                   </a>
                 </li>
                 {typeof Username !== "undefined" && (
                   <li className="nav-item">
                     <a className="nav-link" href="/posts">
+                    <img
+                      src={PostIcon }
+                      width={20}
+                      height={20}
+                      style={{ marginRight: 10 }}
+                    />
                       Posts
                     </a>
                   </li>
@@ -66,21 +85,39 @@ function NavBar() {
                         Hello, {Username}
                       </a>
                       <ul className="dropdown-menu">
-                        <li>
-                          <a className="dropdown-item" href="#">
-                            Settings
+                      <li>
+                          <a className="dropdown-item" href="/user_dashboard">
+                            <img
+                              src={AppIcon}
+                              width={20}
+                              height={20}
+                              style={{ marginRight: 10 }}
+                            />
+                            Dashboard
                           </a>
                         </li>
                         <li>
                           <a className="dropdown-item" href="#">
-                            Dashboard
+                            <img
+                              src={SettingsIcon}
+                              width={20}
+                              height={20}
+                              style={{ marginRight: 10 }}
+                            />
+                            Settings
                           </a>
                         </li>
                         <li>
                           <hr className="dropdown-divider" />
                         </li>
                         <li>
-                          <a className="dropdown-item" href="/logout">
+                          <a className="dropdown-item" href="/logout" style={{ color: 'red' }}>
+                            <img
+                              src={LogoutIcon}
+                              width={20}
+                              height={20}
+                              style={{ marginRight: 10}}
+                            />
                             Logout
                           </a>
                         </li>
@@ -95,6 +132,12 @@ function NavBar() {
                         aria-current="page"
                         href="/login"
                       >
+                        <img
+                          src={LoginIcon}
+                          width={20}
+                          height={20}
+                          style={{ marginRight: 10 }}
+                        />
                         Login
                       </a>
                     </li>
@@ -105,6 +148,12 @@ function NavBar() {
                         aria-current="page"
                         href="/signup"
                       >
+                        <img
+                          src={AddIcon}
+                          width={20}
+                          height={20}
+                          style={{ marginRight: 10 }}
+                        />
                         Sign Up
                       </a>
                     </li>

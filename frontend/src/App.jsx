@@ -4,8 +4,10 @@ import Signup from "./components/Signup/signup";
 import Login from "./components/Login/login";
 import Logout from "./components/Logout/logout";
 import NavBar from "./components/Navbar/navbar";
+import Dashboard from "./components/DashBoard/dashboard";
 import Posts from "./components/Posts/posts";
 import Home from "./components/Home/home";
+import PageNotFound from "./components/PageNotFound/pagenotfound";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -26,12 +28,12 @@ function App() {
           <QueryClientProvider client={client}>
             <Routes>
               <Route path="/" element={<Home/>} />
-              <Route path="/token" element={<h1>Token</h1>} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/posts" element={<Posts/>} />
-              <Route path="*" element={<h1>Page Not Found 404</h1>} />
+              <Route path="/user_dashboard" element={<Dashboard/>} />
+              <Route path="*" element={<PageNotFound/>} />
             </Routes>
           </QueryClientProvider>
         </Router>

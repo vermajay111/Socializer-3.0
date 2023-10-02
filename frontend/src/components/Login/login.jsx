@@ -3,6 +3,9 @@ import { user_refresh } from "../../slices/UserSlice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import webLogo from "../../assets/web_logo_1.png";
+import passlock from "../../assets/icons/lock-closed-outline.svg"
+import alert from "../../assets/icons/alert-circle-outline.svg"
+import person from "../../assets/icons/person-outline.svg"
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -69,7 +72,7 @@ function Login() {
         
           {localStorage.getItem("showErrorMessage") === 'true' && (
             <div className="alert alert-danger" role="alert">
-              Login Or Signup before looking at posts!
+              <img src={alert} width={40} height={40} style={{ marginRight: 5, marginBottom: 6 }} />Login Or Signup before looking at posts!
             </div>
           )}
           <div className="signupFrm">
@@ -91,7 +94,7 @@ function Login() {
                   placeholder="a"
                   {...register("username")}
                 />
-                <label className="label">Username</label>
+                <label className="label"><img src={person} width={20} height={20} style={{ marginRight: 5, marginBottom: 6 }} /> Username</label>
               </div>
               {errors.username && (
                 <p className="text-danger">{errors.username.message}</p>
@@ -104,7 +107,7 @@ function Login() {
                   placeholder="a"
                   {...register("password")}
                 />
-                <label className="label">Password</label>
+                <label className="label"><img src={passlock} width={20} height={20} style={{ marginRight: 5, marginBottom: 6 }} />Password</label>
               </div>
               {errors.password && (
                 <p className="text-danger">{errors.password.message}</p>
