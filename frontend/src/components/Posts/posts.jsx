@@ -10,7 +10,7 @@ import { format } from "date-fns";
 
 const DateTimeDisplay = (dateTimeString) => {
   const dateTime = new Date(dateTimeString);
-  const formattedDateTime = format(dateTime, "yyyy-MM-dd hh:mm a");
+  const formattedDateTime = format(dateTime, "yyyy/MM/dd hh:mm a");
   return formattedDateTime;
 };
 
@@ -126,7 +126,7 @@ function Posts() {
           <p>Loading...</p>
         </>
       ) : (
-        <div style={{ marginTop: 500 }}>
+        <div className="content-container">
           {data.map((post, index) => (
             <div
               key={post.id}

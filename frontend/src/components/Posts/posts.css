@@ -59,3 +59,12 @@
     100% { transform: rotate(360deg); }
   }
 
+  .content-container {
+    margin-top: 70px; /* Adjust this value as needed */
+    padding: 20px; /* Add padding to separate content from the navbar */
+    overflow-y: auto; /* Add a scrollbar when content overflows */
+    height: calc(100vh - 70px); /* Set the height to fill the remaining viewport */
+    width: 100%
+    
+  }
+  

@@ -7,6 +7,7 @@ import PostIcon from "../../assets/icons/reader-outline.svg"
 import SettingsIcon from "../../assets/icons/settings-outline.svg";
 import LogoutIcon from "../../assets/icons/log-out-outline.svg";
 import AppIcon from "../../assets/icons/apps-outline.svg";
+import "./navbar.css"
 import { useSelector } from "react-redux";
 
 function NavBar() {

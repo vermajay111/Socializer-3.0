@@ -78,8 +78,6 @@ def dislike_post(request):
     }
 
     return Response(response_data)
-   
-    
     
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
@@ -103,8 +101,11 @@ def create_new_post(request):
     raw_auth_header = request.META.get('HTTP_AUTHORIZATION', '')
     user_token = raw_auth_header.replace('token ', '')
     data = request.data
+    
+    PostTitle = data.get("PostTitle")
+    PostContent = data.get("PostContent")
     user = get_object_or_404(User, auth_token=user_token)
-    post = Post(title=data['title'], text=data['content'], author=user)
+    post = Post(title=PostTitle, text=PostContent, author=user)
     post.save()
     return Response({"info": "Created_Post"})
     
