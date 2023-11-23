@@ -98,10 +98,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Socializer',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '989880',
-        'HOST': 'localhost', 
+        'PASSWORD': 'password',
+        'HOST': 'db', 
         'PORT': '5432',
     }
 }
